@@ -40,7 +40,7 @@ namespace HelpApp.Domain.Entities
                 "Invalid name, too short, minimum 3 characters.");
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(description),
-                "Invalid description, name is required.");
+                "Invalid description, description is required.");
 
             DomainExceptionValidation.When(description.Length < 5,
                 "Invalid description, too short, minimum 5 characters.");
@@ -50,6 +50,8 @@ namespace HelpApp.Domain.Entities
             DomainExceptionValidation.When(stock < 0, "Invalid stock negative value.");
 
             DomainExceptionValidation.When(image.Length > 250, "Invalid image name, too long, maximum 250 characters.");
+
+            DomainExceptionValidation.When(string.IsNullOrEmpty(image), "Invalid image, image is required.");
 
         }
     }
