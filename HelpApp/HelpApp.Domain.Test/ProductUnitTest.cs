@@ -96,6 +96,13 @@ namespace HelpApp.Domain.Test
                 .WithMessage("Invalid image, image is required.");
         }
 
+        [Fact(DisplayName = "Create Product With URL Image Null")]
+        public void CreateProduct_WithImageNameNull_ResultObjectException()
+        {
+            Action action = () => new Product(1, "Product Name", "Product Description", 9.99m, 99, null);
+            action.Should().NotThrow<HelpApp.Domain.Validation.DomainExceptionValidation>();
+        }
+
         //description
         [Fact(DisplayName = "Create Product With Description Empty")]
         public void CreateProduct_WithDescriptionEmpty_ResultObjectException()
