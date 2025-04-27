@@ -94,6 +94,8 @@ _Diagrama do Banco de Dados SQL:_
 
 ![image](https://github.com/user-attachments/assets/93321837-49a5-4324-8fad-2c196f8f461f)
 
+## VI. Métricas de `CodeQL Advanced` Aprovadas
+![image](https://github.com/user-attachments/assets/2642f5d7-a4bc-4f9b-9364-963d71ff74e3)
 
 # 👨‍💻 Dados do aluno
 Nome: Miguel Miranda Morandini
@@ -118,4 +120,4 @@ Branch da entrega: avaliacao-miguelmorandini
  ┃ ┗ 📂 Migrations
  ┃ ┗ 📂 Repositories
  ┗ 📂 Infra.IoC
-
+```
