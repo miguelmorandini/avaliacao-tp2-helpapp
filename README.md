@@ -97,6 +97,7 @@ _Diagrama do Banco de Dados SQL:_
 
 # 👨‍💻 Dados do aluno
 Nome: Miguel Miranda Morandini
+
 Curso: Desenvolvimento de Software Multiplataforma – 3º Semestre
 
 Professor: Victor Icoma
