@@ -54,7 +54,7 @@ Autenticação Integrada ao **Windows**
 
 ## I. Testes Unitários 
 _Testes Unitários de **Category** e **Product** funcionando corretamente._
-![image](https://github.com/user-attachments/assets/eb7d8123-59b1-45ba-ac50-f02348aac871)
+![image](https://github.com/user-attachments/assets/875ae1c9-29e6-4df6-96fd-758a898a6759)
 
 ## II. Conexão com o Bando de Dados SQL
 _String de conexão configurada no `appsettings.json`_
