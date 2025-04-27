@@ -13,6 +13,7 @@ namespace HelpApp.Domain.Entities
         public int Stock { get; set; }
         public string Image { get; set; }
         public int CategoryId { get; set; }
+        public Product() { }
         #endregion
 
         public Product(string name, string description, decimal price, int stock, string image)
@@ -52,6 +53,12 @@ namespace HelpApp.Domain.Entities
             DomainExceptionValidation.When(image.Length > 250, "Invalid image name, too long, maximum 250 characters.");
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(image), "Invalid image, image is required.");
+
+            Name = name;
+            Description = description;
+            Price = price;
+            Stock = stock;
+            Image = image;
 
         }
     }
