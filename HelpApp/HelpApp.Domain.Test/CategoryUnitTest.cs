@@ -2,7 +2,6 @@
 using FluentAssertions;
 using Xunit;
 using HelpApp.Domain.Validation;
-using System.Runtime.CompilerServices;
 
 namespace HelpApp.Domain.Test
 {
