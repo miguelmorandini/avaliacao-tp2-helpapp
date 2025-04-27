@@ -16,7 +16,6 @@ namespace HelpApp.Domain.Test
         #endregion
 
         #region Testes Negativos
-        //id
         [Fact(DisplayName = "Create Product With ID Negative")]
         public void CreateProduct_NegativeIdValue_DomainExceptionInvalidId()
         {
@@ -27,7 +26,6 @@ namespace HelpApp.Domain.Test
                 .WithMessage("Update Invalid Id value");
         }
 
-        //name
         [Fact(DisplayName = "Create Product With Short Name")]
         public void CreateProduct_ShortNameValue_DomainExceptionShortName()
         {
@@ -48,13 +46,11 @@ namespace HelpApp.Domain.Test
         [Fact(DisplayName = "Create Product With Name Null")]
         public void CreateProduct_WithNameNull_ResultObjectException()
         {
-            Action action = () => new Product(1, null, "Product Description", 9.99m, 99, "img/productimage.jpg");
+            Action action = () => new Product(1, null!, "Product Description", 9.99m, 99, "img/productimage.jpg");
             action.Should().Throw<HelpApp.Domain.Validation.DomainExceptionValidation>()
                 .WithMessage("Invalid name, name is required.");
         }
 
-       
-        //price
         [Theory(DisplayName = "Create Product With Invalid Price")]
         [InlineData(-25)]
         public void CreateProduct_InvalidPriceValue_DomainException(int value)
@@ -65,7 +61,6 @@ namespace HelpApp.Domain.Test
                  .WithMessage("Invalid price negative value.");
         }
 
-        //stock
         [Theory(DisplayName = "Create Product With Inavlid Stock")]
         [InlineData(-5)]
         public void CreateProduct_InvalidStockValue_ExceptionDomainNegativeValue(int value)
@@ -76,7 +71,6 @@ namespace HelpApp.Domain.Test
                    .WithMessage("Invalid stock negative value.");
         }
 
-        //image
         [Theory(DisplayName = "Create Product With Long URL Image")]
         [InlineData("https://avatars.githubusercontent.com/u/654654651398798798798798798798798798654654321321321321321321321321321321321321321321321658479879879846465465465465465132198498498465465246549879879846213219849849846521321684684987465132165419687498746541631658468465840123321005408?v=4&size=64")]
         public void CreateProduct_LongImageName_DomainExceptionLongImageName(string url)
@@ -99,11 +93,10 @@ namespace HelpApp.Domain.Test
         [Fact(DisplayName = "Create Product With URL Image Null")]
         public void CreateProduct_WithImageNameNull_ResultObjectException()
         {
-            Action action = () => new Product(1, "Product Name", "Product Description", 9.99m, 99, null);
+            Action action = () => new Product(1, "Product Name", "Product Description", 9.99m, 99, null!);
             action.Should().NotThrow<HelpApp.Domain.Validation.DomainExceptionValidation>();
         }
 
-        //description
         [Fact(DisplayName = "Create Product With Description Empty")]
         public void CreateProduct_WithDescriptionEmpty_ResultObjectException()
         {
@@ -115,7 +108,7 @@ namespace HelpApp.Domain.Test
         [Fact(DisplayName = "Create Product With Description Null")]
         public void CreateProduct_WithDescriptionNull_ResultObjectException()
         {
-            Action action = () => new Product(1, "Product Name", null, 9.99m, 99, "img/productimage.jpg");
+            Action action = () => new Product(1, "Product Name", null!, 9.99m, 99, "img/productimage.jpg");
             action.Should().Throw<HelpApp.Domain.Validation.DomainExceptionValidation>()
                 .WithMessage("Invalid description, description is required.");
         }

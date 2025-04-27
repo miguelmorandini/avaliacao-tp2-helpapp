@@ -53,9 +53,9 @@ namespace HelpApp.Domain.Test
 
         [Theory(DisplayName = "Create Category With Name Null")]
         [InlineData(null)]
-        public void CreateCategory_WithNameNull_ResultObjectException(string name)
+        public void CreateCategory_WithNameNull_ResultObjectException(string? name)
         {
-            Action action = () => new Category(name);
+            Action action = () => new Category(name!);
             action.Should().Throw<HelpApp.Domain.Validation.DomainExceptionValidation>()
                 .WithMessage("Invalid name, name is required.");
         }
