@@ -13,6 +13,7 @@ namespace HelpApp.Domain.Entities
         public int Stock { get; set; }
         public string Image { get; set; }
         public int CategoryId { get; set; }
+        public Product() { }
         #endregion
 
         public Product(string name, string description, decimal price, int stock, string image)
@@ -40,7 +41,7 @@ namespace HelpApp.Domain.Entities
                 "Invalid name, too short, minimum 3 characters.");
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(description),
-                "Invalid description, name is required.");
+                "Invalid description, description is required.");
 
             DomainExceptionValidation.When(description.Length < 5,
                 "Invalid description, too short, minimum 5 characters.");
@@ -50,6 +51,14 @@ namespace HelpApp.Domain.Entities
             DomainExceptionValidation.When(stock < 0, "Invalid stock negative value.");
 
             DomainExceptionValidation.When(image.Length > 250, "Invalid image name, too long, maximum 250 characters.");
+
+            DomainExceptionValidation.When(string.IsNullOrEmpty(image), "Invalid image, image is required.");
+
+            Name = name;
+            Description = description;
+            Price = price;
+            Stock = stock;
+            Image = image;
 
         }
     }

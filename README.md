@@ -1,4 +1,4 @@
-# 📘 Avaliação Técnica – Clean Architecture + Azure SQL
+# 📘 Avaliação Técnica – Clean Architecture + SQL Server
 
 Este repositório contém minha entrega referente à avaliação técnica baseada no repositório original do professor:  
 [https://github.com/victoricoma/avaliacao-tp2-helpapp](https://github.com/victoricoma/avaliacao-tp2-helpapp)
@@ -7,7 +7,7 @@ Este repositório contém minha entrega referente à avaliação técnica basead
 
 ## ✅ Objetivo
 
-Implementar os repositórios `Category` e `Product` seguindo os padrões da Clean Architecture, aplicar a migration `Initial` e conectar a aplicação com uma instância de SQL Server no Azure.
+Implementar os repositórios `Category` e `Product` seguindo os padrões da Clean Architecture, aplicar a migration `Initial` e conectar a aplicação com uma instância de SQL Server.
 
 ---
 
@@ -17,63 +17,107 @@ Implementar os repositórios `Category` e `Product` seguindo os padrões da Clea
 - [x] Configurações com `EntityTypeConfiguration` para `Category` e `Product`
 - [x] Injeção de dependência configurada (`DependencyInjectionAPI`)
 - [x] Migration `Initial` criada com `HasData()` para categorias
-- [x] Banco de dados SQL Server criado no Azure
-- [x] Migration aplicada com sucesso no Azure via `dotnet ef database update`
+- [x] Banco de dados SQL Server criado localmente
+- [x] Migration aplicada com sucesso no SQL via `Package Manager Console`
 
 ---
 # 🔧 Comandos utilizados
 ## Criação da migration
-dotnet ef migrations add Initial --project Infra.Data --startup-project WebAPI
+```
+Add-Migration Initial
+```
 
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
+## Aplicação no banco de dados (SQL)
+```
+Update-Database
+```
 
-
-## Aplicação no banco de dados (Azure)
-dotnet ef database update --project Infra.Data --startup-project WebAPI
 
 # 🔗 String de conexão (mascarada)
-
+```
 "ConnectionStrings": {
-  "DefaultConnection": "Server=tcp:servidor-sql-aluno.database.windows.net,1433;Initial Catalog=NomeDoBanco;Persist Security Info=False;User ID=aluno_azure;Password=********;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  "DefaultConnection": "Data Source=DESKTOP-F68GVQT\\SQLEXPRESS;Initial Catalog=avalicaomigueltp2;Integrated Security=True;Trust Server Certificate=True;"
 }
+```
 
-# ☁️ Configuração no Azure
-SQL Server criado no portal Azure
+# ☁️ Configuração no Banco de Dados Local
+Database criado no SQL Server através do comando:
+```
+CREATE DATABASE avalicaomigueltp2;
+```
 
-Banco de dados nomeado: avaliacao_tp2_aluno
+Banco de dados nomeado: **avaliacaomigueltp2**
 
-IP local autorizado no firewall
+Autenticação Integrada ao **Windows**
 
-Autenticação SQL ativada
+# 🖼️ Prints de evidência
 
-Migration aplicada com sucesso diretamente do Visual Studio Terminal
+## I. Testes Unitários 
+_Testes Unitários de **Category** e **Product** funcionando corretamente._
+![image](https://github.com/user-attachments/assets/875ae1c9-29e6-4df6-96fd-758a898a6759)
 
-# 🖼️ Prints de evidência (opcional)
-Insira prints aqui comprovando:
+## II. Conexão com o Bando de Dados SQL
+_String de conexão configurada no `appsettings.json`_
+![image](https://github.com/user-attachments/assets/03e5d0e3-b164-4603-bda7-24d2bc11de81)
 
-Aplicação bem-sucedida da migration no Azure
+## III. Inserindo Dados de `Category`
+_Dados inseridos na tabela Categories._
+![image](https://github.com/user-attachments/assets/ed3583bc-68bd-44da-b714-2c4dab272af3)
 
-Tabelas e dados populados
+## IV. Migration Initial
+_Migration Initial criada pelo `Package Manager Console`, através do comando:_
+```
+Add-Migration Initial
+```
+_E posteriormente atualizado no Banco de Dados SQL através do comando:_
+```
+Update-Database
+```
+![image](https://github.com/user-attachments/assets/019560f9-439c-417c-a00d-f460cc6f1284)
+
+## V. Resultado no Banco de Dados SQL
+_Colunas criadas corretamente:_
+
+![image](https://github.com/user-attachments/assets/171c8600-78de-461d-834b-a5405db1e707)
+
+_Dados Adicionados corretamente:_
+
+![image](https://github.com/user-attachments/assets/c7b452ab-22e2-4567-965f-2abdc9f6269b) 
+
+![image](https://github.com/user-attachments/assets/e2ed222f-2b13-4315-a7fa-160b93b4c47a)
+
+_Migration adicionadas com sucesso:_
+
+![image](https://github.com/user-attachments/assets/2f9976cc-de8e-479a-9d57-4a6ea99211c7)
+
+_Diagrama do Banco de Dados SQL:_
+
+![image](https://github.com/user-attachments/assets/93321837-49a5-4324-8fad-2c196f8f461f)
+
+## VI. Métricas de `CodeQL Advanced` Aprovadas
+![image](https://github.com/user-attachments/assets/2642f5d7-a4bc-4f9b-9364-963d71ff74e3)
 
 # 👨‍💻 Dados do aluno
-Nome: [Seu Nome Aqui]
-Curso: Desenvolvimento de Sistemas – 3º Semestre
+Nome: Miguel Miranda Morandini
+
+Curso: Desenvolvimento de Software Multiplataforma – 3º Semestre
 
 Professor: Victor Icoma
 
-Branch da entrega: avaliacao-githubaluno
+Branch da entrega: avaliacao-miguelmorandini
 
 ## 🧱 Estrutura da aplicação
 
 ```bash
-📦 src
- ┣ 📂 Domain
+📦 HelpApp
+ ┣ 📂 API
  ┣ 📂 Application
- ┣ 📂 Infra
- ┃ ┣ 📂 Data
- ┃ ┃ ┣ 📂 Migrations
- ┃ ┃ ┣ 📂 Repositories
- ┃ ┃ ┗ 📂 EntityConfiguration
- ┗ 📂 WebAPI
-
+ ┣ 📂 Domain
+ ┣ 📂 Domain.Test
+ ┣ 📂 Infra.Data
+ ┃ ┣ 📂 Context
+ ┃ ┣ 📂 EntitiesConfiguration
+ ┃ ┗ 📂 Migrations
+ ┃ ┗ 📂 Repositories
+ ┗ 📂 Infra.IoC
+```
